@@ -1,101 +1,115 @@
 # Ex.No:4(D) DESIGN PATTERN  ---- BEHAVIOUR PATTERN
 
 ## QUESTION:
-Develop a weather monitoring system using the Observer Design Pattern. The WeatherStation acts as the subject and notifies multiple display units (MobileDisplay and LEDDisplay) whenever temperature changes. Implement the behavioural pattern so that all registered displays automatically update when the temperature is modified.
+Create a program that sends different types of notifications: "email", "sms", and "push". Use the Factory Pattern to generate the appropriate notification sender and call its notifyUser() method.
+
+
 
 ## AIM:
-To implement the Observer Behavioural Design Pattern in Java by creating a WeatherStation (subject) that broadcasts updates to multiple observers whenever data changes.
+To write a Java program that demonstrates a Behavioral Pattern using the Factory Method, allowing different notification types to send messages through a common interface.
 
 ## ALGORITHM :
 1.	Start the program.
 2.	Import the necessary package 'java.util'
-3.	Create an Observer interface with an update() method.
-4.	Create a Subject interface with register(), remove(), and notifyObservers().
-5.	Implement WeatherStation class that maintains temperature and observer list.
-6.	Implement MobileDisplay and LEDDisplay classes as observers.
-7.	Read temperature input from the user.
-8.	Update the WeatherStation and notify all observers.
-9.	Display the updated messages from all observers.
-10.	End the program.
-11.	
+3.	Create an interface Notification with method notifyUser().
+4. Implement concrete classes: EmailNotification, SMSNotification, and PushNotification.
+5. Create a NotificationFactory that returns the appropriate object based on user input.
+6. In main(), get the notification type from the user.
+7. Call the notifyUser() method of the returned object.
+8. If no valid type is provided, display an error.
+9. Stop the program.
+
+
+
+
+
 ## PROGRAM:
  ```
 /*
 Program to implement a Behaviour Pattern using Java
 Developed by: Syed Mohamed Raihan M
-RegisterNumber: 212223230093
+RegisterNumber:212224240167
 */
 ```
 
 ## SOURCE CODE:
+```
+import java.util.Scanner;
 
-```java
-import java.util.*;
-
-interface Observer {
-    void update(int temperature);
+interface Notification {
+    void notifyUser();
 }
 
-interface Subject {
-    void register(Observer o);
-    void remove(Observer o);
-    void notifyObservers();
+// ===== Concrete Notifications =====
+class EmailNotification implements Notification {
+    public void notifyUser() {
+        System.out.println("Sending Email Notification");
+    }
 }
 
-class WeatherStation implements Subject {
-    private int temperature;
-    private List<Observer> observers = new ArrayList<>();
-
-    public void setTemperature(int temp) {
-        this.temperature = temp;
-        notifyObservers();
+class SMSNotification implements Notification {
+    public void notifyUser() {
+        System.out.println("Sending SMS Notification");
     }
+}
 
-    public void register(Observer o) {
-        observers.add(o);
+class PushNotification implements Notification {
+    public void notifyUser() {
+        System.out.println("Sending Push Notification");
     }
+}
 
-    public void remove(Observer o) {
-        observers.remove(o);
-    }
-
-    public void notifyObservers() {
-        for (Observer obs : observers) {
-            obs.update(temperature);
+// ===== Factory =====
+class NotificationFactory {
+    public Notification createNotification(String type) {
+        if (type == null) return null;
+        switch (type.toLowerCase()) {
+            case "email":
+                return new EmailNotification();
+            case "sms":
+                return new SMSNotification();
+            case "push":
+                return new PushNotification();
+            default:
+                return null;
         }
     }
 }
 
-class MobileDisplay implements Observer {
-    public void update(int temperature) {
-        System.out.println("Mobile Display: Temperature updated → " + temperature + "°C");
-    }
-}
-
-class LEDDisplay implements Observer {
-    public void update(int temperature) {
-        System.out.println("LED Display: Temperature changed → " + temperature + "°C");
-    }
-}
-
+// ===== Main =====
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        NotificationFactory factory = new NotificationFactory();
 
-        WeatherStation ws = new WeatherStation();
-        ws.register(new MobileDisplay());
-        ws.register(new LEDDisplay());
+        while (true) {
+            String input = sc.nextLine().trim();
+            if (input.equalsIgnoreCase("exit")) break;
 
-        int temp = sc.nextInt();
-        ws.setTemperature(temp);
+            Notification n = factory.createNotification(input);
+            if (n != null) {
+                n.notifyUser();
+            } else {
+                System.out.println("Invalid notification type: " + input);
+            }
+        }
+
+        sc.close();
     }
 }
 ```
 
+
+
+
+
+
 ## OUTPUT:
 
-<img width="814" height="194" alt="image" src="https://github.com/user-attachments/assets/80c75c20-f6b6-4c69-a7d4-68909c28ccbe" />
+![java45](https://github.com/ABINAYA-27-76/19AI307_ODD-25-26-/blob/c6316a5904f4a174dd995f6b7d7c47b65f677921/19AI307_JAVA(25-26)/Module-04/DAY-5/java45.png)
 
 ## RESULT:
+Thus, the program demonstrating the Behavioral Pattern using Factory Method to generate different notification types was successfully implemented and executed.
 
-Thus the output is executed successfully.
+
+
