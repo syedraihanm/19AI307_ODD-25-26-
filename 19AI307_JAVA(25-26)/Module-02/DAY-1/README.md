@@ -21,8 +21,8 @@ To create a Java class that accepts a circle’s radius and computes its area an
  ```
 /*
 Program to implement a Class and Objects using Java
-Developed by: JOHN PAUL J
-RegisterNumber: 212223230093
+Developed by: Syed Mohamed Raihan M 
+RegisterNumber: 212224240167
 */
 ```
 
