@@ -1,49 +1,75 @@
+
 # Ex.No:2(D) VARIABLE SCOPE AND CONSTRUCTOR
 
 ## QUESTION:
-Write a program to access a static variable using both class name and object.
-
+Create a Java class Book with instance variables title and author.
 
 ## AIM:
-To demonstrate accessing a static variable in Java using both the class name and an object.
+To write a Java program to demonstrate variable scope and the use of a constructor to initialize instance variables.
 
 ## ALGORITHM :
-
 1.	Start the program.
 2.	Import the necessary package 'java.util'
-3.	Declare a class containing a static variable.
-4. Access the static variable directly using the class name.
-5.	Create an object of the class.
-6.	Access the same static variable using the object.
-7.	Display both outputs.
-8.	Stop the program.
+3.	Create a class named Book with instance variables title and author.
+4. Create a parameterized constructor to initialize these variables.
+5. In the main() method, create an object of the Book class and pass values through the constructor.
+6. Display the values.
+7. End the program.
+
 
 ## PROGRAM:
  ```
 /*
-Program to implement a Access Specifiers using Java
-Developed by: JOHN PAUL J
-RegisterNumber: 212223230093
+Program to implement a Variable scope and Constructor using Java
+Developed by:  DHAMINI S
+RegisterNumber: 212224040064
 */
 ```
 
 ## SOURCE CODE:
-
-```java
+```
 import java.util.Scanner;
 
-class Sample {
-    static int number;
+class Book 
+{
+    String title;
+    String author;
+    Book(String t, String a)
+    {
+        title = t;
+        author = a;
+    }
 
-    Sample(int number) {
-        Sample.number = number;
+    void display() {
+        System.out.println("Book Title: " + title);
+        System.out.println("Author: " + author);
     }
 }
 
-public class Main {
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        int input = scan.nextInt();
-        Sample obj = new Sample(input);
-        System.out.println("Accessing using class name: " + Sample.number);
-        System.out.println("Accessing using object: " + obj.number);
+class prog {
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        
+        String title = sc.nextLine();   
+        String author = sc.nextLine(); 
+
+        Book b = new Book(title, author);
+        b.display();
+
+        sc.close();
+    }
+}
+```
+
+
+
+
+
+## OUTPUT:
+
+![java24](https://github.com/ABINAYA-27-76/19AI307_ODD-25-26-/blob/deb86e008500c33f568047cc6e92298e774f4c47/19AI307_JAVA(25-26)/Module-02/DAY-4/java24.png)
+
+## RESULT:
+
+Thus, the Java program to demonstrate variable scope and constructor was executed successfully.
