@@ -21,8 +21,8 @@ To write a Java program to demonstrate variable scope and the use of a construct
  ```
 /*
 Program to implement a Variable scope and Constructor using Java
-Developed by:  DHAMINI S
-RegisterNumber: 212224040064
+Developed by:  Syed Mohamed Raihan M 
+RegisterNumber: 212224240167
 */
 ```
 
