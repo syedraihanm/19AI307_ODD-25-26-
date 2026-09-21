@@ -20,8 +20,8 @@ To write a Java program that creates two threads, assigns names and priorities t
  ```
 /*
 Program to implement a Thread Priority Concept using Java
-Developed by: JOHN PAUL J
-RegisterNumber: 212223230093
+Developed by: Syed Mohamed Raihan 
+RegisterNumber: 212224240167
 */
 ```
 
